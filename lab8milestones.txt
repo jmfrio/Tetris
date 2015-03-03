@@ -1,0 +1,16 @@
+Lab 8 Milestones
+
+Tasks :
+-5 points basic understanding of SDL
+-15 points create a piece base class
+-20 points create four piece derived classes
+
+Tasks :
+-5 points basic understanding of SDL
+-10 points create two piece derived classes
+-25 points make the piece coordinates change for the up, left, and right arrow keys
+
+Tasks : 
+-5 points basic understanding of SDL
+-5 points create one piece derived classes
+-30 points create the board class 
