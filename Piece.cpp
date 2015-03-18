@@ -36,7 +36,6 @@ void Piece::fillVec()	{
 
 void Piece::rotate()	{
 	resetTemp();
-//	Display();
 	int s=Piece::getSize();
 	for (int i=0; i<s; i++)	{
 		shapeTemp[i][s-1]=shape[0][i];	
