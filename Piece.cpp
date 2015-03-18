@@ -6,7 +6,7 @@
 using namespace std;
 
 Piece::Piece(int Size)	{
-	idNum=1;
+//	idNum=1;
 	size=Size;
 
 	vector<int> tempVec;
