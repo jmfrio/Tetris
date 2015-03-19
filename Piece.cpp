@@ -35,18 +35,18 @@ void Piece::fillVec()	{
 }
 
 void Piece::rotate()	{
-	resetTemp();
-	int s=Piece::getSize();
-	for (int i=0; i<s; i++)	{
-		shapeTemp[i][s-1]=shape[0][i];	
-		shapeTemp[i][s-2]=shape[1][i];
-		shapeTemp[i][s-3]=shape[2][i];
-		if (s==4)	{
-			shapeTemp[i][s-4]=shape[3][i];
-		}
-	}
-	updateTemp();
-	Display();
+//	resetTemp();
+//	int s=Piece::getSize();
+//	for (int i=0; i<s; i++)	{
+//		shapeTemp[i][s-1]=shape[0][i];	
+//		shapeTemp[i][s-2]=shape[1][i];
+//		shapeTemp[i][s-3]=shape[2][i];
+//		if (s==4)	{
+//			shapeTemp[i][s-4]=shape[3][i];
+//		}
+//	}
+//	updateTemp();
+//	Display();
 }
 
 void Piece::resetTemp()	{

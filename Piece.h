@@ -9,7 +9,7 @@ using namespace std;
 class Piece	{
 	public:
 		Piece(int size=3);
-		void rotate();
+		virtual void rotate()=0;
 		void Display();
 		virtual void fillVec()=0;
 		void resetTemp();
@@ -19,7 +19,7 @@ class Piece	{
 		//vector<vector <int> > shape;
 		//vector<vector <int> > shapeTemp;
 		//variables for the different coordinates
-		int x1, y1, x2, y2, x3, y3, x4, y4;
+		int r1, c1, r2, c2, r3, c3, r4, c4;
 	private:
 		int size;
 		//int idNum;
