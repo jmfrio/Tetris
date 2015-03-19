@@ -14,3 +14,5 @@ class BoxPiece : public Piece	{
 		virtual void fillVec();
 	private:
 		string color;
+};
+#endif
