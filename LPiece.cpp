@@ -8,12 +8,62 @@ using namespace std;
 
 LPiece::LPiece(int size) : Piece(size)	{
 	color="yellow";
-	fillVec();	
+//	fillVec();
+	//set first coordinates (r1,c1) to upper right corner of L
+	//other 3 points based on (r1,c1)
+	r1=0;
+	c1=5;
+	r2=r1+1;
+	c2=c1;
+	r3=r1+1;
+	c3=c1-1;
+	r4=r1+1;
+	c4=c1-2;	
+	numRotations=0;
 }
 
-void LPiece::fillVec()	{
-	shape[0][2]= 1;
-	for (int i=0; i<(Piece::getSize()); i++)	{
-		shape[1][i]= 1;
+void LPiece::rotate()	{
+	numRotations++;
+	switch (numRotations) {
+		case 1:
+			//first 90 degree rotation
+			r1=r1+2;
+			r2=r2+1;
+			c2=c2-1;
+			r4=r4-1;
+			c4=c4+1;	
+			break;
+		case 2:
+			//second 90 degree rotation
+			c1=c1-2;
+			r2=r2-1;
+			c2=c2-1;
+			r4=r4+1;
+			c4=c4+1;
+			break;
+		case 3:
+			//third 90 degree rotation
+			r1=r1-2;
+			r2=r2-1;
+			c2=c2+1;
+			r4=r4+1;
+			c4=c4-1;
+			break;
+		case 4:
+			//fourth 90 degree rotation
+			c1=c1+2;
+			r2=r2+1;
+			c2=c2+1;
+			r4=r4-1;
+			c4=c4-1;
+			break;
 	}
 }
+
+//void LPiece::fillVec()	{
+//	shape[0][2]= 1;
+//	
+//	for (int i=0; i<(Piece::getSize()); i++)	{
+//		shape[1][i]= 1;
+//	}
+//}
