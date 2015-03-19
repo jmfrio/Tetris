@@ -14,7 +14,7 @@ class Piece	{
 		virtual void fillVec()=0;
 		void resetTemp();
 		void updateTemp();
-		int getidNum();
+		//int getidNum();
 		int getSize();
 		//vector<vector <int> > shape;
 		//vector<vector <int> > shapeTemp;

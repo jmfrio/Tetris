@@ -65,9 +65,9 @@ void Piece::updateTemp()	{
 	}
 }
 
-int Piece::getidNum()	{
-	return idNum;
-}
+//int Piece::getidNum()	{
+//	return idNum;
+//}
 
 int Piece::getSize()	{
 	return size;
