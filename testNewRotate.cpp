@@ -17,7 +17,38 @@ LinePiece_1.rotate();
 LinePiece_1.Display();
 LinePiece_1.rotate();
 LinePiece_1.Display();
+LinePiece_1.rotate();
+LinePiece_1.Display();
+LinePiece_1.rotate();
+LinePiece_1.Display();
 //Line-piece has been returned to its initial orientation
+LinePiece_1.right();
+cout << "Right: " << endl;
+LinePiece_1.Display();
+LinePiece_1.right();
+cout << "Right: " << endl;
+LinePiece_1.Display();
+LinePiece_1.right();
+cout << "Right: " << endl;
+LinePiece_1.Display();
+LinePiece_1.down();
+cout << "Down: " << endl;
+LinePiece_1.Display();
+LinePiece_1.down();
+cout << "Down: " << endl;
+LinePiece_1.Display();
+LinePiece_1.down();
+cout << "Down: " << endl;
+LinePiece_1.Display();
+LinePiece_1.left();
+cout << "Left: " << endl;
+LinePiece_1.Display();
+LinePiece_1.left();
+cout << "Left: " << endl;
+LinePiece_1.Display();
+LinePiece_1.left();
+cout << "Left: " << endl;
+LinePiece_1.Display();
 
 }
 
