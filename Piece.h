@@ -20,6 +20,9 @@ class Piece	{
 		//vector<vector <int> > shapeTemp;
 		//variables for the different coordinates
 		int r1, c1, r2, c2, r3, c3, r4, c4;
+		virtual void right();
+		virtual void left();
+		virtual void down();
 	private:
 		int size;
 		//int idNum;

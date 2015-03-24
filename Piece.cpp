@@ -76,3 +76,24 @@ int Piece::getidNum()	{
 int Piece::getSize()	{
 	return size;
 }
+
+void Piece::right()	{
+	c1= c1+1;
+	c2= c2+1;
+	c3= c3+1;
+	c4= c4+1;
+}
+
+void Piece::left()	{
+	c1= c1-1;
+	c2= c2-1;
+	c3= c3-1;
+	c4= c4-1;
+}
+
+void Piece::down()	{
+	r1= r1+1;
+	r2= r2+1;
+	r3= r3+1;
+	r4= r4+1;
+}
