@@ -11,9 +11,9 @@ class Piece	{
 		Piece(int size=3);
 		virtual void rotate()=0;
 		void Display();
-		virtual void fillVec()=0;
-		void resetTemp();
-		void updateTemp();
+		//virtual void fillVec()=0;
+		//void resetTemp();
+		//void updateTemp();
 		//int getidNum();
 		int getSize();
 		//vector<vector <int> > shape;

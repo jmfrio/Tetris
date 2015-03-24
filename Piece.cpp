@@ -9,7 +9,7 @@ Piece::Piece(int Size)	{
 //	idNum=1;
 	size=Size;
 
-	vector<int> tempVec;
+	/*vector<int> tempVec;
 
 	for (int j=0; j<size; j++)	{
 		for (int i=0; i<size; i++)	{
@@ -18,21 +18,25 @@ Piece::Piece(int Size)	{
 		shape.push_back(tempVec);
 		shapeTemp.push_back(tempVec);
 		tempVec.clear();
-	}
+	}*/
 }
 
 void Piece::Display()	{
-	for (int i=0; i<size; i++)	{
+	/*for (int i=0; i<size; i++)	{
 		for (int j=0; j<size; j++)	{
 			cout << shape[i][j] << " ";
 		}
 		cout << endl;
 	}
-	cout << endl;
+	cout << endl;*/
+cout << "r1: " << r1 << "   c1: " << c1 << endl;
+cout << "r2: " << r2 << "   c2: " << c2 << endl;
+cout << "r3: " << r3 << "   c3: " << c3 << endl;
+cout << "r4: " << r4 << "   c4: " << c4 << endl;
 }
 
-void Piece::fillVec()	{
-}
+//void Piece::fillVec()	{
+//}
 
 void Piece::rotate()	{
 //	resetTemp();
@@ -49,7 +53,7 @@ void Piece::rotate()	{
 //	Display();
 }
 
-void Piece::resetTemp()	{
+/*void Piece::resetTemp()	{
 	for (int i=0; i<size; i++)	{
 		for (int j=0; j<size; j++)	{
 			shapeTemp[i][j]=0;	
@@ -65,9 +69,9 @@ void Piece::updateTemp()	{
 	}
 }
 
-//int Piece::getidNum()	{
-//	return idNum;
-//}
+int Piece::getidNum()	{
+	return idNum;
+}*/
 
 int Piece::getSize()	{
 	return size;
