@@ -52,3 +52,13 @@ numR++;
 		shape[0][i] = 1;
 	}
 }*/
+
+void LinePiece :: right(){
+	Piece::right();
+}
+void LinePiece :: left(){
+	Piece::left();
+}
+void LinePiece :: down(){
+	Piece::down();
+}
