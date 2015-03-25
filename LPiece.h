@@ -11,8 +11,12 @@ class LPiece : public Piece	{
 		LPiece(int size=3);
 		//virtual void fillVec();
 		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
+
 	private:
 		string color;
-		int numRotations;
+		int numR;
 };
 #endif

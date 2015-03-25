@@ -19,13 +19,13 @@ LPiece::LPiece(int size) : Piece(size)	{
 	c3=c1-1;
 	r4=r1+1;
 	c4=c1-2;	
-	numRotations=0;
+	numR=0;
 }
 
 void LPiece::rotate()	{
-	numRotations++;
-	switch (numRotations) {
-		case 1:
+	numR=numR%4;
+	switch (numR) {
+		case 0:
 			//first 90 degree rotation
 			r1=r1+2;
 			r2=r2+1;
@@ -33,7 +33,7 @@ void LPiece::rotate()	{
 			r4=r4-1;
 			c4=c4+1;	
 			break;
-		case 2:
+		case 1:
 			//second 90 degree rotation
 			c1=c1-2;
 			r2=r2-1;
@@ -41,7 +41,7 @@ void LPiece::rotate()	{
 			r4=r4+1;
 			c4=c4+1;
 			break;
-		case 3:
+		case 2:
 			//third 90 degree rotation
 			r1=r1-2;
 			r2=r2-1;
@@ -49,7 +49,7 @@ void LPiece::rotate()	{
 			r4=r4+1;
 			c4=c4-1;
 			break;
-		case 4:
+		case 3:
 			//fourth 90 degree rotation
 			c1=c1+2;
 			r2=r2+1;
@@ -58,6 +58,8 @@ void LPiece::rotate()	{
 			c4=c4-1;
 			break;
 	}
+	cout << "NumR: " << numR << endl << endl;
+	numR++;
 }
 
 //void LPiece::fillVec()	{
@@ -67,3 +69,14 @@ void LPiece::rotate()	{
 //		shape[1][i]= 1;
 //	}
 //}
+
+
+void LPiece :: right(){
+	Piece::right();
+}
+void LPiece :: left(){
+	Piece::left();
+}
+void LPiece :: down(){
+	Piece::down();
+}
