@@ -11,8 +11,13 @@ using namespace std;
 class jPiece : public Piece	{
 	public:
 		jPiece(int size=3);
-		virtual void fillVec();
+		//virtual void fillVec();
+		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
 	private:
 		string color;
+		int numR;
 };
 #endif
