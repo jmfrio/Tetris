@@ -11,7 +11,7 @@ jPiece::jPiece(int size) : Piece(size)	{
 //	fillVec();	
 	//set initial conditions
 	r1=0;
-	c1=5;
+	c1=3;
 	r2=r1+1;
 	c2=c1;
 	r3=r1+1;
