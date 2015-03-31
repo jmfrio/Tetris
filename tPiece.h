@@ -10,9 +10,15 @@ using namespace std;
 class tPiece : public Piece	{
 	public:
 		tPiece(int size=3);
-		virtual void fillVec();
+		//virtual void fillVec();
+		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
+
 	private:
 		string color;
+		int numR;
 
 };
 

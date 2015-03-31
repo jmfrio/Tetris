@@ -11,6 +11,14 @@ using namespace std;
 class BoxPiece : public Piece	{
 	public:
 		BoxPiece(int size=3);
-		virtual void fillVec();
+//		virtual void fillVec();
+		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
+
 	private:
 		string color;
+		int numR;
+};
+#endif

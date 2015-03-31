@@ -11,8 +11,14 @@ using namespace std;
 class LinePiece : public Piece {
 	public:
 		LinePiece(int size=4);
-		virtual void fillVec();
+		//virtual void fillVec();
+		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
+
 	private:
 		string color;
+		int numR;
 };
 #endif

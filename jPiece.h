@@ -1,19 +1,23 @@
+#ifndef JPIECE_H
+#define JPIECE_H
+
 #include <iostream>
-#include <vector>
 #include <string>
-#include "jPiece.h"
+#include <vector>
 #include "Piece.h"
 
 using namespace std;
 
-jPiece::jPiece(int size) : Piece(size)	{
-	color="green";
-	fillVec();	
-}
-
-void jPiece::fillVec()	{
-	shape[0][0]= 1;
-	for (int i=0; i<(Piece::getSize()); i++)	{
-		shape[1][i]= 1;
-	}
-}
+class jPiece : public Piece	{
+	public:
+		jPiece(int size=3);
+		//virtual void fillVec();
+		virtual void rotate();
+		virtual void right();
+		virtual void left();
+		virtual void down();
+	private:
+		string color;
+		int numR;
+};
+#endif
