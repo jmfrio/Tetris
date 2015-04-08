@@ -13,7 +13,7 @@
 #include "Piece.h"
 #include "BoxPiece.h"
 #include "LinePiece.h"
-#include "lPiece.h"
+#include "LPiece.h"
 #include "jPiece.h"
 #include "sPiece.h"
 #include "zPiece.h"
@@ -29,28 +29,18 @@ class Board {
 		void fillRow(int);                  // set values in a particular row
 		int isRowFull(int);                 // returns 1 if row is full, 0 if not
 		void deleteRow(int);                // deletes row (to be used when row is filled) 
-		void addPiece(int);                 // put a new piece on the board
+		void addPiece();                    // put a new piece on the board
 		int isGameOver();                   // to be checked after every piece finished falling, before next piece is made
-		void updateCoordinates(); // set the board to match current coordinates of piece
+		void updateCoordinates();           // set the board to match current coordinates of piece
+		void setBoard();                    // set board=temp (to be used when piece is finished falling)
 	private:
 		int width;                          // width of board
 		int height;                         // height of board
 		vector< vector<int> > board;        // 2D vector of ints
 		vector< vector<int> > temp;         // temp board
-		Piece newPiece;                     // currently falling piece
+		Piece *newPiece;                    // currently falling piece
 		int pieceType;                      // randomly generated type of next piece
-		int newPieceR1;                     // when piece coordinates are updated, the previous ones are saved here
-		int newPieceR2;                     // this way, the old coordinates can be set to 0
-		int newPieceR3;
-		int newPieceR4;
-		int newPieceC1;
-		int newPieceC2;
-		int newPieceC3;
-		int newPieceC4;
 };
-
-
-#endif
 
 Board::Board() {
 	width = 10;
@@ -71,8 +61,6 @@ Board::Board() {
 	}
 	
 	srand(time(NULL));
-	pieceType = (rand()%7) + 1;
-	addPiece( pieceType );
 }
 
 void Board::display() {
@@ -93,11 +81,11 @@ int Board::isSpotFull( int row, int column ) {
 }
 
 void Board::fillRow(int row) {
-	int temp;
+	int input;
 	cout << "Please enter the " << width << " values to be placed in the row, separated by spaces:" << endl;
 	for( int i=0; i<width; i++ ) {
-		cin >> temp;
-		board[row][i] = temp;
+		cin >> input;
+		board[row][i] = input;
 	}
 }
 
@@ -122,36 +110,27 @@ void Board::deleteRow( int row ) {
 	}
 }
 
-void Board::addPiece( int pieceType ) {
+void Board::addPiece() {
+	int pieceType;
+	pieceType = (rand() % 6) + 1;
 	switch( pieceType ) {
 		case 1:
-			newPiece = new BoxPiece();
+			newPiece = new BoxPiece(3);
 		case 2:
-			newPiece = new LinePiece();
+			newPiece = new LinePiece(3);
 		case 3:
-			newPiece = new lPiece();
+			newPiece = new LPiece(3);
 		case 4:
-			newPiece = new jPiece();
+			newPiece = new jPiece(3);
 		case 5:
-			newPiece = new tPiece();
+			newPiece = new tPiece(3);
 		case 6:
-			newPiece = new zPiece();
+			newPiece = new zPiece(3);
 		case 7:
-			newPiece = new sPiece();
+			newPiece = new sPiece(3);
 	}
-	
-	board[newPiece.r1][newPiece.c1] = 1;
-	board[newPiece.r2][newPiece.c2] = 1;
-	board[newPiece.r3][newPiece.c3] = 1;
-	board[newPiece.r4][newPiece.c4] = 1;
-	newPieceR1 = newPiece.r1;
-	newPieceR2 = newPiece.r2;
-	newPieceR3 = newPiece.r3;
-	newPieceR4 = newPiece.r4;
-	newPieceC1 = newPiece.c1;
-	newPieceC2 = newPiece.c2;
-	newPieceC3 = newPiece.c3;
-	newPieceC4 = newPiece.c4;
+
+	updateCoordinates();	
 }
 
 int Board::isGameOver() {
@@ -165,26 +144,28 @@ int Board::isGameOver() {
 }
 
 void Board::updateCoordinates() {
-	board[newPieceR1][newPieceC1] = 0;
-	board[newPieceR2][newPieceC2] = 0;
-	board[newPieceR3][newPieceC3] = 0;
-	board[newPieceR4][newPieceC4] = 0;
+	// revert back to board (delete previous piece position)
+	for( int i=0; i<height; i++ ) {
+		for( int j=0; j<width; j++ ) {
+			temp[i][j] = board[i][j];
+		}
+	}
+	// put updated piece coordinates onto temp board
+	temp[newPiece->r1][newPiece->c1] = 1;
+	temp[newPiece->r2][newPiece->c2] = 1;
+	temp[newPiece->r3][newPiece->c3] = 1;
+	temp[newPiece->r4][newPiece->c4] = 1;
+}
 
-	board[newPiece.r1][newPiece.c1] = 1;
-	board[newPiece.r2][newPiece.c2] = 1;
-	board[newPiece.r3][newPiece.c3] = 1;
-	board[newPiece.r4][newPiece.c4] = 1;
-
-	newPieceR1 = newPiece.r1;
-	newPieceR2 = newPiece.r2;
-	newPieceR3 = newPiece.r3;
-	newPieceR4 = newPiece.r4;
-	newPieceC1 = newPiece.c1;
-	newPieceC2 = newPiece.c2;
-	newPieceC3 = newPiece.c3;
-	newPieceC4 = newPiece.c4;
+void Board::setBoard() {
+	for( int i=0; i<height; i++ ) {
+		for( int j=0; j<width; j++ ) {
+			board[i][j] = temp[i][j];
+		}
+	}
 }
 
 
 
 
+#endif
