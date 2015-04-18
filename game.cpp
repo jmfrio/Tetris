@@ -22,10 +22,40 @@ int main() {
 	Board game;
 	// display board
 	game.display();
+	cout << "finished initial display" << endl;
 	game.addPiece();
+	cout << "finished adding piece" << endl;
 	game.display();
+	cout << "displayed board with new piece " << endl;
+
+
+	//work with first piece
+	game.right();
+	game.display();
+	game.right();
+	game.display();
+	game.down();
+	game.down();
+	game.down();
+	game.down();
+	game.down();
+	game.down();
+	game.display();
+
+
+	game.rotate();
+	game.display();
+	game.rotate();
+	game.display();
+	game.rotate();
+	game.display();
+	game.rotate();
+	game.display();
+	//add second piece and work with that
+	game.addPiece();
+	cout << "finished adding piece" << endl;
+	game.display();
+	cout << "displayed board with new piece " << endl;
 }
-
-
 
 

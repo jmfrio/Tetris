@@ -1,4 +1,4 @@
-// Elizabeth Vista
+//pElizabeth Vista
 // Fundamentals of Computing II
 // Final Project -- Tetris
 // board.h -- board that holds Tetris pieces
@@ -33,6 +33,10 @@ class Board {
 		int isGameOver();                   // to be checked after every piece finished falling, before next piece is made
 		void updateCoordinates();           // set the board to match current coordinates of piece
 		void setBoard();                    // set board=temp (to be used when piece is finished falling)
+		void right();
+		void left();
+		void down();
+		void rotate();
 	private:
 		int width;                          // width of board
 		int height;                         // height of board
@@ -58,6 +62,7 @@ Board::Board() {
 	// fill a 2D vector with 1D vectors of 0s
 	for( int i=0; i<height; i++ ) {
 		board.push_back(oneDvec);
+		temp.push_back(oneDvec);
 	}
 	
 	srand(time(NULL));
@@ -112,10 +117,14 @@ void Board::deleteRow( int row ) {
 
 void Board::addPiece() {
 	int pieceType;
+	Piece * piece_ptr;
+	
+	new BoxPiece;
+	BoxPiece newBox(3);
 	pieceType = (rand() % 6) + 1;
 	switch( pieceType ) {
 		case 1:
-			newPiece = new BoxPiece(3);
+			piece_ptr=&newBox;
 		case 2:
 			newPiece = new LinePiece(3);
 		case 3:
@@ -129,8 +138,10 @@ void Board::addPiece() {
 		case 7:
 			newPiece = new sPiece(3);
 	}
-
+	cout << "entering updateCoordinates function" << endl;
 	updateCoordinates();	
+	cout << "exiting updateCoordinates function" << endl;
+	setBoard();
 }
 
 int Board::isGameOver() {
@@ -145,11 +156,13 @@ int Board::isGameOver() {
 
 void Board::updateCoordinates() {
 	// revert back to board (delete previous piece position)
+	cout << "entering for loop" << endl;
 	for( int i=0; i<height; i++ ) {
 		for( int j=0; j<width; j++ ) {
-			temp[i][j] = board[i][j];
+			temp[i][j] = 0;
 		}
 	}
+	cout << "deleted previous piece position" << endl;
 	// put updated piece coordinates onto temp board
 	temp[newPiece->r1][newPiece->c1] = 1;
 	temp[newPiece->r2][newPiece->c2] = 1;
@@ -165,7 +178,27 @@ void Board::setBoard() {
 	}
 }
 
+void Board::right()	{
+	newPiece->right();	
+	updateCoordinates();	
+	setBoard();
+}
 
+void Board::left()	{
+	newPiece->left();	
+	updateCoordinates();	
+	setBoard();
+}
 
+void Board::down()	{
+	newPiece->down();	
+	updateCoordinates();	
+	setBoard();
+}
 
+void Board::rotate()	{
+	newPiece-> rotate();
+	updateCoordinates();
+	setBoard();
+}
 #endif
