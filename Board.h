@@ -113,7 +113,7 @@ void Board::deleteRow( int row ) {
 		}
 	}
 	for( int j=0; j<width; j++ ) {
-		board[height-1][j] = 0; // set first row to 0s
+		board[0][j] = 0; // set first row to 0s
 	}
 }
 
