@@ -177,6 +177,11 @@ void Board::setBoard() {
 			board[i][j] = temp[i][j];
 		}
 	}
+	for( int i=0; i<height; i++ ) {
+		if( isRowFull(i) ) {
+			deleteRow(i);
+		}
+	}
 }
 
 void Board::right()	{
