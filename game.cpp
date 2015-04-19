@@ -23,12 +23,31 @@ int main() {
 	cout << "finished initial display" << endl;
 	game.addPiece();
 	cout << "finished adding piece" << endl;
+	while( ! game.pieceFinishedFalling() ) {
+		game.down();
+		cout << endl << endl;
+		game.display();
+	}
+	game.setBoard();
+	game.addPiece();
+	game.left();
+	game.left();
+	while( ! game.pieceFinishedFalling() ) {
+		game.down();
+		cout << endl << endl;
+		game.display();
+	}
+	cout << endl << endl;
 	game.display();
-	cout << "displayed board with new piece " << endl;
+
+
+
+//	game.display();
+//	cout << "displayed board with new piece " << endl;
 
 
 	//work with first piece
-	game.right();
+/*	game.right();
 	game.display();
 	game.right();
 	game.display();
@@ -54,6 +73,7 @@ int main() {
 	cout << "finished adding piece" << endl;
 	game.display();
 	cout << "displayed board with new piece " << endl;
+*/
 }
 
 

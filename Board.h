@@ -37,6 +37,7 @@ class Board {
 		void left();
 		void down();
 		void rotate();
+		int pieceFinishedFalling();
 	private:
 		int width;                          // width of board
 		int height;                         // height of board
@@ -71,7 +72,7 @@ Board::Board() {
 void Board::display() {
 	for( int row=0; row<height; row++ ) {
 		for( int col=0; col<width; col++ ) {
-			cout << board[row][col];
+			cout << temp[row][col];
 		}
 		cout << endl;
 	}
@@ -138,10 +139,10 @@ void Board::addPiece() {
 		case 7:
 			newPiece = new sPiece(3);
 	}
-	cout << "entering updateCoordinates function" << endl;
+//	cout << "entering updateCoordinates function" << endl;
 	updateCoordinates();	
-	cout << "exiting updateCoordinates function" << endl;
-	setBoard();
+//	cout << "exiting updateCoordinates function" << endl;
+//	setBoard();
 }
 
 int Board::isGameOver() {
@@ -156,13 +157,13 @@ int Board::isGameOver() {
 
 void Board::updateCoordinates() {
 	// revert back to board (delete previous piece position)
-	cout << "entering for loop" << endl;
+//	cout << "entering for loop" << endl;
 	for( int i=0; i<height; i++ ) {
 		for( int j=0; j<width; j++ ) {
-			temp[i][j] = 0;
+			temp[i][j] = board[i][j];
 		}
 	}
-	cout << "deleted previous piece position" << endl;
+//	cout << "deleted previous piece position" << endl;
 	// put updated piece coordinates onto temp board
 	temp[newPiece->r1][newPiece->c1] = 1;
 	temp[newPiece->r2][newPiece->c2] = 1;
@@ -181,24 +182,34 @@ void Board::setBoard() {
 void Board::right()	{
 	newPiece->right();	
 	updateCoordinates();	
-	setBoard();
+//	setBoard();
 }
 
 void Board::left()	{
 	newPiece->left();	
 	updateCoordinates();	
-	setBoard();
+//	setBoard();
 }
 
 void Board::down()	{
 	newPiece->down();	
 	updateCoordinates();	
-	setBoard();
+//	setBoard();
 }
 
 void Board::rotate()	{
 	newPiece-> rotate();
 	updateCoordinates();
-	setBoard();
+//	setBoard();
 }
+
+int Board::pieceFinishedFalling() {
+	if( (newPiece->r1)==19 || (newPiece->r2)==19 || (newPiece->r3)==19 || (newPiece->r4)==19 || 
+		board[newPiece->r1+1][newPiece->c1]==1 || board[newPiece->r2+1][newPiece->c2]==1 || 
+		board[newPiece->r3+1][newPiece->c3]==1 || board[newPiece->r4+1][newPiece->c4]==1 )
+		return 1;
+	else
+		return 0;
+}
+
 #endif
