@@ -19,10 +19,10 @@ cout << "r4: " << r4 << "   c4: " << c4 << endl;
 
 
 void Piece::rotate()	{
-        if ( (r1 == 9) || (r2 == 9) || (r3 == 9) || (r4 ==9) ) {
+        if ( (c1 == 9) || (c2 == 9) || (c3 == 9) || (c4 ==9) ) {
                 cout << "too far right" << endl;
         }
-        else if ( (r1 == 0) || (r2 == 0) || (r3 == 0) || (r4 ==0) ) {
+        else if ( (c1 == 0) || (c2 == 0) || (c3 == 0) || (c4 ==0) ) {
                 cout << "too far left" << endl;
         }
         else if ( (r1 == 19) || (r2 == 19) || (r3 == 19) || (r4 ==19) ) {
@@ -37,7 +37,11 @@ int Piece::getSize()	{
 }
 
 void Piece::right()	{
-	if ( (r1 == 9) || (r2 == 9) || (r3 == 9) || (r4 ==9) ) {
+//	cout << "r1 = " << r1 << ", c1 = " << c1 << endl;
+//	cout << "r2 = " << r2 << ", c2 = " << c2 << endl;
+//	cout << "r3 = " << r3 << ", c3 = " << c3 << endl;
+//	cout << "r4 = " << r4 << ", c4 = " << c4 << endl;
+	if ( (c1 == 9) || (c2 == 9) || (c3 == 9) || (c4 ==9) ) {
 		cout << "too far right" << endl;
 	} else	{
 		c1= c1+1;
@@ -48,7 +52,7 @@ void Piece::right()	{
 }
 
 void Piece::left()	{
-	if ( (r1 == 0) || (r2 == 0) || (r3 == 0) || (r4 ==0) ) {
+	if ( (c1 == 0) || (c2 == 0) || (c3 == 0) || (c4 ==0) ) {
 		cout << "too far left" << endl;
 	} else	{
 		c1= c1-1;
