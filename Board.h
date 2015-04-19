@@ -10,6 +10,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <time.h>
 #include "Piece.h"
 #include "BoxPiece.h"
 #include "LinePiece.h"
@@ -126,19 +127,27 @@ void Board::addPiece() {
 	switch( pieceType ) {
 		case 1:
 			piece_ptr=&newBox;
+			break;
 		case 2:
 			newPiece = new LinePiece(3);
+			break;
 		case 3:
 			newPiece = new LPiece(3);
+			break;
 		case 4:
 			newPiece = new jPiece(3);
+			break;
 		case 5:
 			newPiece = new tPiece(3);
+			break;
 		case 6:
 			newPiece = new zPiece(3);
+			break;
 		case 7:
 			newPiece = new sPiece(3);
+			break;
 	}
+	cout << "new piece is number: " << pieceType << endl;
 //	cout << "entering updateCoordinates function" << endl;
 	updateCoordinates();	
 //	cout << "exiting updateCoordinates function" << endl;

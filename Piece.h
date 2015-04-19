@@ -9,7 +9,7 @@ using namespace std;
 class Piece	{
 	public:
 		Piece(int size=3);
-		virtual void rotate()=0;
+		virtual void rotate();
 		void Display();
 		int getSize();
 		int r1, c1, r2, c2, r3, c3, r4, c4;
