@@ -11,16 +11,14 @@
 #include "sPiece.h"
 #include "zPiece.h"
 #include "tPiece.h"
-
-#include <iostream>
 #include "Board.h"
+#include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
 int main() {
 	Board game;
-	// display board
 	game.display();
 	game.addPiece();
 	game.display();
