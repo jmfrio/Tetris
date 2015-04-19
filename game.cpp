@@ -15,65 +15,70 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <time.h>
 using namespace std;
 
 int main() {
 	Board game;
+	char choice;
+	while ( ! game.isGameOver() )	{
+
 	game.display();
 	cout << "finished initial display" << endl;
 	game.addPiece();
 	cout << "finished adding piece" << endl;
+	game.display();
+
 	while( ! game.pieceFinishedFalling() ) {
-		game.down();
-		cout << endl << endl;
+		cout << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
+                cout << "Choice: ";
+                cin >> choice;
+
+                        switch (choice) {
+                                case 'r':
+                                        game.right();
+                                        break;
+                                case 'l':
+                                        game.left();
+                                        break;
+                                case 'd':
+                                        game.down();
+                                        break;
+                                case 'f':
+                                        game.rotate();
+                                        break;
+                        }
+
 		game.display();
 	}
 	game.setBoard();
-	game.addPiece();
-	game.left();
-	game.left();
+}
+/*	game.addPiece();
 	while( ! game.pieceFinishedFalling() ) {
-		game.down();
-		cout << endl << endl;
+                cout << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
+                cout << "Choice: ";
+                cin >> choice;
+
+                        switch (choice) {
+                                case 'r':
+                                        game.right();
+                                        break;
+                                case 'l':
+                                        game.left();
+                                        break;
+                                case 'd':
+                                        game.down();
+                                        break;
+                                case 'f':
+                                        game.rotate();
+                                        break;
+                        }
+
 		game.display();
 	}
-	cout << endl << endl;
-	game.display();
+*/	game.display();
 
 
-
-//	game.display();
-//	cout << "displayed board with new piece " << endl;
-
-
-	//work with first piece
-/*	game.right();
-	game.display();
-	game.right();
-	game.display();
-	game.down();
-	game.down();
-	game.down();
-	game.down();
-	game.down();
-	game.down();
-	game.display();
-
-
-	game.rotate();
-	game.display();
-	game.rotate();
-	game.display();
-	game.rotate();
-	game.display();
-	game.rotate();
-	game.display();
-	//add second piece and work with that
-	game.addPiece();
-	cout << "finished adding piece" << endl;
-	game.display();
-	cout << "displayed board with new piece " << endl;
-*/
 }
 
 
