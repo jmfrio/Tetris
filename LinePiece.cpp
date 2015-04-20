@@ -22,7 +22,7 @@ LinePiece :: LinePiece(int size) : Piece(size) {
 }
 
 void LinePiece::rotate()	{
-   if ( r2 >= 1 ) { 
+   if ( r2 >= 1 && c2 >= 1 && c2 <= 7 ) { 
 	numR = numR%2;
 	switch (numR) {
 		case 0:
