@@ -28,42 +28,44 @@ tPiece :: tPiece(int size) : Piece(size)	{
 }*/
 
 void tPiece :: rotate(){
-	numR= numR%4;
-	switch ( numR ) {
-		case 0:
-			r2= r1-1;
-			c2= c1-1;
-			r3= r1;
-			c3= c1-1;
-			r4= r1+1;
-			c4= c1-1;
-			break;
-		case 1:
-			r2= r1-1;
-			c2= c1+1
-			r3= r1-1;
-			c3= c1;
-			r4= r1-1;
-			c4= c1-1;
-			break;
-		case 2:
-			r2= r1-1;
-			c2= c1+1;
-			r3= r1;
-			c3= c1;
-			r4= r1+1;
-			c4= c1+1;
-			break;
-		case 3:
-			r2= r1+1;
-			c2= c1-1;
-			r3= r1+1;
-			c3= c1;
-			r4= r1+1;
-			c4= c1+1
-			break;
+	if ( r1 >=1 )	{
+		numR= numR%4;
+		switch ( numR ) {
+			case 0:
+				r2= r1-1;
+				c2= c1-1;
+				r3= r1;
+				c3= c1-1;
+				r4= r1+1;
+				c4= c1-1;
+				break;
+			case 1:
+				r2= r1-1;
+				c2= c1+1;
+				r3= r1-1;
+				c3= c1;
+				r4= r1-1;
+				c4= c1-1;
+				break;
+			case 2:
+				r2= r1-1;
+				c2= c1+1;
+				r3= r1;
+				c3= c1;
+				r4= r1+1;
+				c4= c1+1;
+				break;
+			case 3:
+				r2= r1+1;
+				c2= c1-1;
+				r3= r1+1;
+				c3= c1;
+				r4= r1+1;
+				c4= c1+1;
+				break;
+		}
+		numR++;	
 	}
-	numR++;	
 }
 
 void tPiece :: right(){
