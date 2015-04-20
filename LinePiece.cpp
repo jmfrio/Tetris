@@ -22,6 +22,7 @@ LinePiece :: LinePiece(int size) : Piece(size) {
 }
 
 void LinePiece::rotate()	{
+   if ( r2 >= 1 ) { 
 	numR = numR%2;
 	switch (numR) {
 		case 0:
@@ -43,8 +44,9 @@ void LinePiece::rotate()	{
 			c4= c2+2;
 			break;
 	}
-cout << "NumR : " << numR << endl << endl;
-numR++;
+	cout << "NumR : " << numR << endl << endl;
+	numR++;
+   }
 }
 
 /*void LinePiece :: fillVec(){
