@@ -30,7 +30,7 @@ jPiece::jPiece(int size) : Piece(size)	{
 
 void jPiece::rotate()	{
 	numR=numR%4;
-	if (c4 <= 8)	{
+	if (c4 <= 8 && c3 >=1)	{
 	switch (numR) {
 		case 0:
 			//first 90 degree rotation

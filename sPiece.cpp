@@ -23,7 +23,7 @@ sPiece :: sPiece(int size) : Piece(size)	{
 
 
 void sPiece :: rotate(){
-	if (r1 >= 1)	{
+	if (r1 >= 1 && c3 <= 8 && c1 <= 8 )	{
 		numR= numR%2;
 		switch ( numR ) {
 			case 0 :

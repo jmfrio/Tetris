@@ -28,7 +28,7 @@ tPiece :: tPiece(int size) : Piece(size)	{
 }*/
 
 void tPiece :: rotate(){
-	if ( r1 >=1 )	{
+	if ( r1 >=1 && c1 >=1 && c1 <=8 )	{
 		numR= numR%4;
 		switch ( numR ) {
 			case 0:
