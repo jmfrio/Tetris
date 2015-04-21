@@ -51,7 +51,7 @@ void tPiece :: rotate(){
 				r2= r1-1;
 				c2= c1+1;
 				r3= r1;
-				c3= c1;
+				c3= c1+1;
 				r4= r1+1;
 				c4= c1+1;
 				break;
