@@ -56,9 +56,9 @@ Board::Board() {
 	// fill a 1D vector with 0s
 	for( int i=0; i<width; i++ ) {
 		oneDvec.push_back(0);
-		cout << oneDvec[i];
+//		cout << oneDvec[i];
 	}
-	cout << endl;
+//	cout << endl;
 	
 	vector< vector<int> > twoDvec;
 	// fill a 2D vector with 1D vectors of 0s
