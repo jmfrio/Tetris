@@ -121,12 +121,10 @@ void Board::addPiece() {
 	int pieceType;
 	Piece * piece_ptr;
 	
-	new BoxPiece;
-	BoxPiece newBox(3);
-	pieceType = (rand() % 6) + 1;
+	pieceType = (rand() % 7) + 1;
 	switch( pieceType ) {
 		case 1:
-			piece_ptr=&newBox;
+			newPiece = new BoxPiece(3);
 			break;
 		case 2:
 			newPiece = new LinePiece(3);
@@ -147,7 +145,7 @@ void Board::addPiece() {
 			newPiece = new sPiece(3);
 			break;
 	}
-	cout << "new piece is number: " << pieceType << endl;
+//	cout << "new piece is number: " << pieceType << endl;
 //	cout << "entering updateCoordinates function" << endl;
 	updateCoordinates();	
 //	cout << "exiting updateCoordinates function" << endl;
@@ -212,6 +210,7 @@ void Board::down()	{
 }
 
 void Board::rotate()	{
+	cout << "entering board rotate function" << endl;
 	newPiece-> rotate();
 	updateCoordinates();
 //	setBoard();
