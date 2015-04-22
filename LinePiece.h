@@ -10,7 +10,7 @@ using namespace std;
 
 class LinePiece : public Piece {
 	public:
-		LinePiece(int size=4);
+		LinePiece(int=4);
 		//virtual void fillVec();
 		virtual void rotate();
 		virtual void right();

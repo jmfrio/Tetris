@@ -24,6 +24,8 @@ LPiece::LPiece(int size) : Piece(size)	{
 
 void LPiece::rotate()	{
 	numR=numR%4;
+
+	if ( c3 <= 7 && c3 >= 1)	{ 
 	switch (numR) {
 		case 0:
 			//first 90 degree rotation
@@ -60,6 +62,7 @@ void LPiece::rotate()	{
 	}
 	cout << "NumR: " << numR << endl << endl;
 	numR++;
+	}
 }
 
 //void LPiece::fillVec()	{

@@ -40,6 +40,10 @@ class Board {
 		void rotate();
 		int pieceFinishedFalling();
 	private:
+		int score;			//score of game
+		int level;			//current level
+		int rows_deleted;		//number of rows deleted on that turn
+		int rows_deleted_total;		//total number of rows that have been deleted
 		int width;                          // width of board
 		int height;                         // height of board
 		vector< vector<int> > board;        // 2D vector of ints
@@ -51,14 +55,18 @@ class Board {
 Board::Board() {
 	width = 10;
 	height = 20;
-
+	score=0;
+	level=1;
+	rows_deleted=0;
+	rows_deleted_total=0;
+	
 	vector<int> oneDvec;
 	// fill a 1D vector with 0s
 	for( int i=0; i<width; i++ ) {
 		oneDvec.push_back(0);
-		cout << oneDvec[i];
+//		cout << oneDvec[i];
 	}
-	cout << endl;
+//	cout << endl;
 	
 	vector< vector<int> > twoDvec;
 	// fill a 2D vector with 1D vectors of 0s
@@ -121,12 +129,10 @@ void Board::addPiece() {
 	int pieceType;
 	Piece * piece_ptr;
 	
-	new BoxPiece;
-	BoxPiece newBox(3);
-	pieceType = (rand() % 6) + 1;
+	pieceType = (rand() % 7) + 1;
 	switch( pieceType ) {
 		case 1:
-			piece_ptr=&newBox;
+			newPiece = new BoxPiece(3);
 			break;
 		case 2:
 			newPiece = new LinePiece(3);
@@ -147,7 +153,7 @@ void Board::addPiece() {
 			newPiece = new sPiece(3);
 			break;
 	}
-	cout << "new piece is number: " << pieceType << endl;
+//	cout << "new piece is number: " << pieceType << endl;
 //	cout << "entering updateCoordinates function" << endl;
 	updateCoordinates();	
 //	cout << "exiting updateCoordinates function" << endl;
@@ -189,8 +195,29 @@ void Board::setBoard() {
 	for( int i=0; i<height; i++ ) {
 		if( isRowFull(i) ) {
 			deleteRow(i);
+			rows_deleted++;	//increment number of rows deleted with this play
+			rows_deleted_total++;	//increment total number of rows deleted
 		}
 	}
+	//every ten rows, move up a level
+	if (rows_deleted_total % 10 == 0 && rows_deleted_total != 0)	{
+		level++;
+		cout << "Level " << level << endl;
+	}
+	if (rows_deleted == 1)	{
+		score=score + (400)*(level);
+	}	
+	else if (rows_deleted == 2)	{
+		score=score + (1000)*(level);
+	}
+	else if (rows_deleted == 3)	{
+		score=score + (3000)*(level);
+	}
+	else if (rows_deleted >= 4)	{
+		score=score + (12000)*(level);
+	}
+	cout << "Score= " << score << endl;
+	rows_deleted=0;
 }
 
 void Board::right()	{
@@ -212,6 +239,7 @@ void Board::down()	{
 }
 
 void Board::rotate()	{
+	cout << "entering board rotate function" << endl;
 	newPiece-> rotate();
 	updateCoordinates();
 //	setBoard();

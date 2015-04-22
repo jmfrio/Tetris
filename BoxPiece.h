@@ -10,7 +10,7 @@ using namespace std;
 
 class BoxPiece : public Piece	{
 	public:
-		BoxPiece(int size=3);
+		BoxPiece(int=3);
 //		virtual void fillVec();
 		virtual void rotate();
 		virtual void right();

@@ -19,65 +19,42 @@ using namespace std;
 
 int main() {
 	Board game;
+	cout << "BEGINNING GAME..." << endl;
 	char choice;
+	//game.display();
 	while ( ! game.isGameOver() )	{
-
-	game.display();
-	cout << "finished initial display" << endl;
-	game.addPiece();
-	cout << "finished adding piece" << endl;
-	game.display();
-
-	while( ! game.pieceFinishedFalling() ) {
-		cout << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
-                cout << "Choice: ";
-                cin >> choice;
-
-                        switch (choice) {
-                                case 'r':
-                                        game.right();
-                                        break;
-                                case 'l':
-                                        game.left();
-                                        break;
-                                case 'd':
-                                        game.down();
-                                        break;
-                                case 'f':
-                                        game.rotate();
-                                        break;
-                        }
-
+		game.addPiece();
+		cout << endl;
 		game.display();
+
+		while( ! game.pieceFinishedFalling() ) {
+			cout << endl << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
+        	        cout << "Choice: ";
+                	cin >> choice;
+
+                        	switch (choice) {
+                                	case 'r':
+                                        	game.right();
+	                                        break;
+        	                        case 'l':
+                	                        game.left();
+                        	                break;
+                                	case 'd':
+                                        	game.down();
+                	                        break;
+   		                        case 'f':
+                   	                     game.rotate();
+                        	                break;
+                        	}
+
+			cout << endl;
+			game.display();
+			cout << endl;
+		}
+		game.setBoard();
 	}
-	game.setBoard();
-}
-/*	game.addPiece();
-	while( ! game.pieceFinishedFalling() ) {
-                cout << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
-                cout << "Choice: ";
-                cin >> choice;
-
-                        switch (choice) {
-                                case 'r':
-                                        game.right();
-                                        break;
-                                case 'l':
-                                        game.left();
-                                        break;
-                                case 'd':
-                                        game.down();
-                                        break;
-                                case 'f':
-                                        game.rotate();
-                                        break;
-                        }
-
-		game.display();
-	}
-*/	game.display();
-
-
+cout << endl << endl;
+cout << "GAME OVER" << endl;
 }
 
 

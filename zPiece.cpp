@@ -19,36 +19,54 @@ zPiece :: zPiece(int size) : Piece(size)	{
 	c4= c1+1;	//5
 }
 
-/*void zPiece :: fillVec(){
-	for( int i=0; i<(Piece::getSize() - 1); i++){
-		shape[0][i] = 1;
-	}
-	for( int j=1; j<(Piece::getSize()); j++ ){
-		shape[1][j] = 1;
-	}
-}*/
 
 void zPiece :: rotate(){
-	numR = numR%2;
-	switch ( numR ) {
-		case 0:
-			r2= r1-1;
-			c2= c1;
-			r3= r1;
-			c3= c1-1;
-			r4= r1+1;
-			c4= c1-1;
-			break;
-		case 1:
-			r2= r1;
-			c2= c1+1;
-			r3= r1-1;
-			c3= c1;
-			r4= r1-1;
-			c4= r1-1;
-			break;
+	if ( r1 >= 1 && c4 >= 1 && c2 >= 1)	{
+		numR = numR%4;
+		switch ( numR ) {
+			case 0:
+				r1= r1+1;
+				c1= c1+1;
+				r2= r2;
+				c2= c2+2;
+				r3= r3;
+				c3= c3;
+				r4= r4+1;
+				c4= c4-1;
+				break;
+			case 1:	
+				r1=r1;
+				c1=c1-1;
+				r2= r2+1;
+				c2= c2;
+				r3= r3-1;
+				c3= c3;
+				r4= r4-2;
+				c4= c4-1;
+				break;
+			case 2:
+				r1= r1;
+				c1= c1;
+				r2= r2+1;
+				c2= c2-1;
+				r3= r3+1;
+				c3= c3+1;
+				r4= r4;
+				c4= c4+2;
+				break;
+			case 3:	
+				r1=r1-1;
+				c1=c1;
+				r2= r2-2;
+				c2= c2-1;
+				r3= r3;
+				c3= c3-1;
+				r4= r4+1;
+				c4= c4;
+				break;
+		}
+		numR++;
 	}
-	numR++;
 
 }
 
