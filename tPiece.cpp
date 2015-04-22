@@ -40,7 +40,7 @@ void tPiece :: rotate(){
 			break;
 		case 1:
 			r2= r1-1;
-			c2= c1+1
+			c2= c1+1;
 			r3= r1-1;
 			c3= c1;
 			r4= r1-1;
@@ -60,7 +60,7 @@ void tPiece :: rotate(){
 			r3= r1+1;
 			c3= c1;
 			r4= r1+1;
-			c4= c1+1
+			c4= c1+1;
 			break;
 	}
 	numR++;	
