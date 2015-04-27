@@ -7,10 +7,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <time.h>
 #include "Piece.h"
 #include "BoxPiece.h"
 #include "LinePiece.h"
@@ -19,8 +15,16 @@
 #include "sPiece.h"
 #include "zPiece.h"
 #include "tPiece.h"
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <time.h>
+
 
 using namespace std;
+
+#include <SDL2/SDL.h>
+#include <string>
 
 class Board {
 	public:
@@ -39,6 +43,7 @@ class Board {
 		void down();
 		void rotate();
 		int pieceFinishedFalling();
+
 	private:
 		int score;			//score of game
 		int level;			//current level
@@ -76,6 +81,7 @@ Board::Board() {
 	}
 	
 	srand(time(NULL));
+
 }
 
 void Board::display() {
@@ -88,7 +94,7 @@ void Board::display() {
 }
 
 int Board::isSpotFull( int row, int column ) {
-	if( board[row][column] == 1 ) {
+	if( temp[row][column] == 1 ) {
 		return 1;
 	} else {
 		return 0;
