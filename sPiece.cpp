@@ -7,7 +7,7 @@
 using namespace std;
 
 sPiece :: sPiece(int size) : Piece(size)	{
-	color = "green";
+	color = 7;
  	//fillVec();
 	r1= 0;
 	c1= 4;

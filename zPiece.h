@@ -10,13 +10,12 @@ using namespace std;
 class zPiece : public Piece{
  	public:
 		zPiece(int size=3);
-		//virtual void fillVec();
 		virtual void rotate();
 		virtual void right();
 		virtual void left();
 		virtual void down();
 	private:
-		string color;
+		int color;
 		int numR;
 
 };

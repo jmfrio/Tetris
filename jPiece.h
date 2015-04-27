@@ -17,7 +17,7 @@ class jPiece : public Piece	{
 		virtual void left();
 		virtual void down();
 	private:
-		string color;
+		int color;
 		int numR;
 };
 #endif

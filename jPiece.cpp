@@ -7,7 +7,7 @@
 using namespace std;
 
 jPiece::jPiece(int size) : Piece(size)	{
-	color="green";
+	color=3;
 //	fillVec();	
 	//set initial conditions
 	r1=0;

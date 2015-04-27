@@ -7,7 +7,7 @@
 using namespace std;
 
 BoxPiece :: BoxPiece(int size) : Piece(size)	{
-	color = "yellow";
+	color = 4;
 //	fillVec();
 	r1=0;
 	c1=3;
@@ -17,7 +17,8 @@ BoxPiece :: BoxPiece(int size) : Piece(size)	{
 	c3=c1+1;
 	r4=r1+1;
 	c4=c1;
-	numR=0;	
+	numR=0;
+
 }
 
 //void BoxPiece :: fillVec(){

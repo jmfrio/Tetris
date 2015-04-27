@@ -7,7 +7,7 @@
 using namespace std;
 
 LPiece::LPiece(int size) : Piece(size)	{
-	color="yellow";
+	color=1;
 //	fillVec();
 	//set first coordinates (r1,c1) to upper right corner of L
 	//other 3 points based on (r1,c1)

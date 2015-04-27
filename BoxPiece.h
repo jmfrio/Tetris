@@ -18,7 +18,7 @@ class BoxPiece : public Piece	{
 		virtual void down();
 
 	private:
-		string color;
+		int color;
 		int numR;
 };
 #endif

@@ -7,7 +7,7 @@
 using namespace std;
 
 tPiece :: tPiece(int size) : Piece(size)	{
-	color = "purple";
+	color = 6;
  	//fillVec();
 	r1= 0;
 	c1= 5;
@@ -28,7 +28,7 @@ tPiece :: tPiece(int size) : Piece(size)	{
 }*/
 
 void tPiece :: rotate(){
-<<<<<<< HEAD
+
 	numR= numR%4;
 	switch ( numR ) {
 		case 0:
@@ -63,7 +63,7 @@ void tPiece :: rotate(){
 			r4= r1+1;
 			c4= c1+1;
 			break;
-=======
+	}
 	if ( r1 >=1 && c1 >=1 && c1 <=8 )	{
 		numR= numR%4;
 		switch ( numR ) {
@@ -101,7 +101,7 @@ void tPiece :: rotate(){
 				break;
 		}
 		numR++;	
->>>>>>> 031ee40a1e3ca24fa9748e25e475c9d177089fbc
+
 	}
 }
 

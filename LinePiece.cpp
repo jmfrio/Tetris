@@ -7,7 +7,7 @@
 using namespace std;
 
 LinePiece :: LinePiece(int size) : Piece(size) {
-	color = "red";
+	color = 2;
 	//fillVec();
 	//set initial coordinates;
 	r2= 0;

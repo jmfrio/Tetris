@@ -7,7 +7,7 @@
 using namespace std;
 
 zPiece :: zPiece(int size) : Piece(size)	{
-	color = "red";
+	color = 5;
 	//fillVec();
 	r1= 0;
 	c1= 4;
