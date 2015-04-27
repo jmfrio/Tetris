@@ -94,7 +94,7 @@ void Board::display() {
 }
 
 int Board::isSpotFull( int row, int column ) {
-	if( temp[row][column] == 1 ) {
+	if( temp[row][column] != 0 || board[row][column] != 0 ) {
 		return 1;
 	} else {
 		return 0;
@@ -118,6 +118,14 @@ int Board::isRowFull( int row ) {
 		}
 	}
 	return isFull;
+}
+
+int Board::getSpotNumber( int row, int col){
+
+if( board[row][col] !=0 ) return board[row][col];
+
+else if ( temp[row][col] != 0 ) return temp[row][col];
+
 }
 
 void Board::deleteRow( int row ) {
