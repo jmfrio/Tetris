@@ -44,6 +44,7 @@ class Board {
 		void down();
 		void rotate();
 		int pieceFinishedFalling();
+		int getLevel();
 
 	private:
 		int score;			//score of game
@@ -178,7 +179,7 @@ void Board::addPiece() {
 int Board::isGameOver() {
 	int isOver = 0;                         // assumes that game is not over
 	for( int i=0; i<width; i++ ) {
-		if( board[0][i] == 1 ) {
+		if( board[0][i] != 0 ) {
 			isOver = 1;             // if any spot in top row is full, game is over
 		}
 	}
@@ -215,7 +216,7 @@ void Board::setBoard() {
 		}
 	}
 	//every ten rows, move up a level
-	if (rows_deleted_total % 10 == 0 && rows_deleted_total != 0)	{
+	if (rows_deleted_total % 4 == 0 && rows_deleted_total != 0)	{
 		level++;
 		cout << "Level " << level << endl;
 	}
@@ -236,15 +237,21 @@ void Board::setBoard() {
 }
 
 void Board::right()	{
+	if ( board[newPiece->r1][newPiece->c1+1]==0 && board[newPiece->r2][newPiece->c2+1]==0 && 
+	     board[newPiece->r3][newPiece->c3+1]==0 && board[newPiece->r4][newPiece->c4+1]==0 ) {	
 	newPiece->right();	
 	updateCoordinates();	
 //	setBoard();
+	}
 }
 
 void Board::left()	{
+	if ( board[newPiece->r1][newPiece->c1-1]==0 && board[newPiece->r2][newPiece->c2-1]==0 && 
+	     board[newPiece->r3][newPiece->c3-1]==0 && board[newPiece->r4][newPiece->c4-1]==0 ) {
 	newPiece->left();	
 	updateCoordinates();	
 //	setBoard();
+	}
 }
 
 void Board::down()	{
@@ -254,7 +261,7 @@ void Board::down()	{
 }
 
 void Board::rotate()	{
-	cout << "entering board rotate function" << endl;
+//	cout << "entering board rotate function" << endl;
 	newPiece-> rotate();
 	updateCoordinates();
 //	setBoard();
@@ -262,11 +269,16 @@ void Board::rotate()	{
 
 int Board::pieceFinishedFalling() {
 	if( (newPiece->r1)==19 || (newPiece->r2)==19 || (newPiece->r3)==19 || (newPiece->r4)==19 || 
-		board[newPiece->r1+1][newPiece->c1]==1 || board[newPiece->r2+1][newPiece->c2]==1 || 
-		board[newPiece->r3+1][newPiece->c3]==1 || board[newPiece->r4+1][newPiece->c4]==1 )
+		board[newPiece->r1+1][newPiece->c1]!=0 || board[newPiece->r2+1][newPiece->c2]!=0 || 
+		board[newPiece->r3+1][newPiece->c3]!=0 || board[newPiece->r4+1][newPiece->c4]!=0 )
 		return 1;
 	else
 		return 0;
 }
+
+int Board::getLevel(){
+	return level;
+}
+
 
 #endif
