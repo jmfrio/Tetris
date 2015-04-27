@@ -211,16 +211,16 @@ void Board::setBoard() {
 		cout << "Level " << level << endl;
 	}
 	if (rows_deleted == 1)	{
-		score=score + (400)*(level+1);
+		score=score + (400)*(level);
 	}	
 	else if (rows_deleted == 2)	{
-		score=score + (1000)*(level+1);
+		score=score + (1000)*(level);
 	}
 	else if (rows_deleted == 3)	{
-		score=score + (3000)*(level+1);
+		score=score + (3000)*(level);
 	}
 	else if (rows_deleted >= 4)	{
-		score=score + (12000)*(level+1);
+		score=score + (12000)*(level);
 	}
 	cout << "Score= " << score << endl;
 	rows_deleted=0;

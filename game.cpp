@@ -1,4 +1,3 @@
-// Elizabeth Vista
 // Fundamentals of Computing II
 // Final Project -- Tetris
 // game.h -- driver program for board class
