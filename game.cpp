@@ -18,13 +18,28 @@
 #include <time.h>
 using namespace std;
 
-int main() {
+#include <SDL2/SDL.h>
+#include <string>
+#include "graphics.h"
+
+int main ( int argc, char* args[] ) {
+
 	Board game;
+	graphics SDL;
+
 	cout << "BEGINNING GAME..." << endl;
 	char choice;
 	//game.display();
 	while ( ! game.isGameOver() )	{
 		game.addPiece();
+		for( int i=0; i<20; i++){
+			for( int j=0; j<10; j++){
+			   if( game.isSpotFull(i,j) == 1 )
+				SDL.fillRect(j, i);
+			   else
+				SDL.clearRect(j,i);
+			}
+		}
 		cout << endl;
 		game.display();
 
@@ -56,6 +71,6 @@ int main() {
 	}
 cout << endl << endl;
 cout << "GAME OVER" << endl;
-}
 
+}
 
