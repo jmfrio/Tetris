@@ -34,6 +34,7 @@ class Board {
 		void fillRow(int);                  // set values in a particular row
 		int isRowFull(int);                 // returns 1 if row is full, 0 if not
 		void deleteRow(int);                // deletes row (to be used when row is filled) 
+		int getSpotNumber( int, int);
 		void addPiece();                    // put a new piece on the board
 		int isGameOver();                   // to be checked after every piece finished falling, before next piece is made
 		void updateCoordinates();           // set the board to match current coordinates of piece
