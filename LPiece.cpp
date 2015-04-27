@@ -60,7 +60,7 @@ void LPiece::rotate()	{
 			c4=c4-1;
 			break;
 	}
-	cout << "NumR: " << numR << endl << endl;
+	//cout << "NumR: " << numR << endl << endl;
 	numR++;
 	}
 }

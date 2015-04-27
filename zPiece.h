@@ -15,7 +15,7 @@ class zPiece : public Piece{
 		virtual void left();
 		virtual void down();
 	private:
-		int color;
+		//int color;
 		int numR;
 
 };

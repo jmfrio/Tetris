@@ -44,7 +44,7 @@ void LinePiece::rotate()	{
 			c4= c2+2;
 			break;
 	}
-	cout << "NumR : " << numR << endl << endl;
+	//cout << "NumR : " << numR << endl << endl;
 	numR++;
    }
 }
