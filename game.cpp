@@ -31,12 +31,14 @@ int main ( int argc, char* args[] ) {
 	//game.display();
 	while ( ! game.isGameOver() )	{
 		game.addPiece();
-		for( int i=0; i<20; i++){
-			for( int j=0; j<10; j++){
-			   if( game.isSpotFull(i,j) == 1 )
-				SDL.fillRect(j, i);
+		for( int row=0; row<20; row++){
+			for( int col=0; col<10; col++){
+			   if( game.isSpotFull( row , col) == 1 ){
+				color = getSpotNumber( row , col );
+				SDL.fillRect(col, row, color);
+			   }
 			   else
-				SDL.clearRect(j,i);
+				SDL.clearRect(col,row, color);
 			}
 		}
 		cout << endl;
