@@ -12,12 +12,12 @@ class Piece	{
 		virtual void rotate();
 		void Display();
 		int getSize();
+		int color;
 		int r1, c1, r2, c2, r3, c3, r4, c4;
 		virtual void right();
 		virtual void left();
 		virtual void down();
 	private:
 		int size;
-		//int idNum;
 };
 #endif
