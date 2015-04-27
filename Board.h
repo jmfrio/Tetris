@@ -186,10 +186,10 @@ void Board::updateCoordinates() {
 	}
 //	cout << "deleted previous piece position" << endl;
 	// put updated piece coordinates onto temp board
-	temp[newPiece->r1][newPiece->c1] = 1;
-	temp[newPiece->r2][newPiece->c2] = 1;
-	temp[newPiece->r3][newPiece->c3] = 1;
-	temp[newPiece->r4][newPiece->c4] = 1;
+	temp[newPiece->r1][newPiece->c1] = newPiece->color;
+	temp[newPiece->r2][newPiece->c2] = newPiece->color;
+	temp[newPiece->r3][newPiece->c3] = newPiece->color;
+	temp[newPiece->r4][newPiece->c4] = newPiece->color;
 }
 
 void Board::setBoard() {
