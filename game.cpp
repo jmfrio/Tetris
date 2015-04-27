@@ -25,27 +25,42 @@ int main ( int argc, char* args[] ) {
 
 	Board game;
 	graphics SDL;
+	bool quit = false;
+	SDL_Event e;
 
-	cout << "BEGINNING GAME..." << endl;
+	//cout << "BEGINNING GAME..." << endl;
 	char choice;
+	while ( !quit ) { //while the x has not been pressed
 	//game.display();
 	while ( ! game.isGameOver() )	{
 		game.addPiece();
 		for( int row=0; row<20; row++){
 			for( int col=0; col<10; col++){
 			   if( game.isSpotFull( row , col) == 1 ){
-				color = getSpotNumber( row , col );
+				int color = game.getSpotNumber( row , col );
 				SDL.fillRect(col, row, color);
 			   }
 			   else
-				SDL.clearRect(col,row, color);
+				SDL.clearRect(col,row);
 			}
 		}
-		cout << endl;
-		game.display();
+		//cout << endl;
+		//game.display();
 
 		while( ! game.pieceFinishedFalling() ) {
-			cout << endl << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
+game.down();
+SDL_Delay( (10-game.getLevel()) * 50 );
+			for( int row=0; row<20; row++){
+			for( int col=0; col<10; col++){
+			   if( game.isSpotFull( row , col) == 1 ){
+				int color = game.getSpotNumber( row , col );
+				SDL.fillRect(col, row, color);
+			   }
+			   else
+				SDL.clearRect(col,row);
+			}
+			}
+		/*	cout << endl << "Please make choice: \n (1) press 'l' to move piece left \n (2) press 'r' to move piece right \n (3) press 'd' to move down \n (4) press 'f' to flip/rotate piece" << endl;
         	        cout << "Choice: ";
                 	cin >> choice;
 
@@ -65,13 +80,55 @@ int main ( int argc, char* args[] ) {
                         	}
 
 			cout << endl;
-			game.display();
-			cout << endl;
-		}
+*/			
+
+
+
+	  while ( SDL_PollEvent( &e ) != 0 ) { //while there are events to be processed
+		if( e.type == SDL_QUIT ) //if the x button is pressed
+		   quit = true; //exits the while loop
+		else if( e.type == SDL_KEYDOWN ) {
+		   switch( e.key.keysym.sym ) {
+			case SDLK_UP :
+			   game.rotate();
+			   break;
+			case SDLK_DOWN :
+			   if( game.pieceFinishedFalling() != 1)
+			   game.down();
+			   break;
+			case SDLK_LEFT :
+			   if( game.pieceFinishedFalling() != 1)
+			   game.left();
+			   break;
+			case SDLK_RIGHT :
+			   if( game.pieceFinishedFalling() != 1)
+			   game.right();
+			   break;
+			default :
+			   
+			   break;
+		   }
+		}	
+			   
+
+
+			//game.display();
+			//cout << endl;
+	 }
+}
 		game.setBoard();
+
 	}
-cout << endl << endl;
-cout << "GAME OVER" << endl;
+
+//cout << endl << endl;
+//cout << "GAME OVER" << endl;
+
+
+
+//clear the board and display a game over message
+SDL.clearBoard();
+SDL_Delay(5000);
+SDL.close();
 
 }
-
+}
