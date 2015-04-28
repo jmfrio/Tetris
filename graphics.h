@@ -68,7 +68,7 @@ graphics :: graphics(){
 }
 
 bool graphics :: init ( void ) {
-cout << "init" << endl;
+//cout << "init" << endl;
    bool success = true;
 
    //initialize SDL
@@ -112,7 +112,7 @@ void graphics :: close ( void ) {
 }
 
 void graphics :: drawBoard(){
-cout << "drawboard" << endl;
+//cout << "drawboard" << endl;
 
    if ( !init() ) //if init returns false
 	printf( "Failed to initialzie!\n" );
@@ -152,15 +152,15 @@ cout << "drawboard" << endl;
 	   SDL_RenderClear ( Renderer );	
 
 	   //DRAW HORIZONTAL GRID LINES
-//	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-//	   for ( int i=0; i<=20; i++){
-//	 	SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20), screen_right, i*(screen_height/20) );
-//	   }
-//   //DRAW VERTICAL GRID LINES
-//	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-//	   for( int i=0; i<=10; i++){
-//		SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10), 0, screen_left+i*(screen_width/10), screen_height );
-//	   }
+	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
+	   for ( int i=0; i<=20; i++){
+	 	SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
+	   }
+           //DRAW VERTICAL GRID LINES
+	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
+	   for( int i=0; i<=10; i++){
+		SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
+	   }
 
 	   SDL_RenderPresent( Renderer );
 	//}
@@ -207,7 +207,7 @@ switch ( pieceColor ) {
 }
 void graphics :: clearRect( int col, int row){
 
-   SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10), (screen_height/20) };
+   SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10)-2, (screen_height/20)-2 };
    SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
    SDL_RenderFillRect( Renderer, &fillRect );
 
@@ -216,21 +216,19 @@ void graphics :: clearRect( int col, int row){
 }
 
 void graphics :: clearBoard( void ) {
-cout << "CLEAR" << endl;
 SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-	   SDL_RenderClear ( Renderer );	
-
+	   SDL_RenderClear ( Renderer );
+	
 	   //DRAW HORIZONTAL GRID LINES
 	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
 	   for ( int i=0; i<=20; i++){
-	 	SDL_RenderDrawLine( Renderer, screen_left-2, i*(screen_height/20), screen_right, i*(screen_height/20) );
+	 	SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
 	   }
-	   //DRAW VERTICAL GRID LINES
+           //DRAW VERTICAL GRID LINES
 	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
 	   for( int i=0; i<=10; i++){
-		SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10), 0, screen_left+i*(screen_width/10), screen_height );
+		SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
 	   }
-
 	   SDL_RenderPresent( Renderer );
 
 }
