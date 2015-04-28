@@ -216,7 +216,7 @@ void Board::setBoard() {
 		}
 	}
 	//every ten rows, move up a level
-	if (rows_deleted_total % 4 == 0 && rows_deleted_total != 0)	{
+	if (rows_deleted_total % 10 == 0 && rows_deleted_total != 0)	{
 		level++;
 		cout << "Level " << level << endl;
 	}
