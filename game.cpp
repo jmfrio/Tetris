@@ -32,6 +32,8 @@ int main ( int argc, char* args[] ) {
 	char choice;
 	while ( !quit ) { //while the x has not been pressed
 	//game.display();
+	  if( e.type == SDL_QUIT ) //if the x button is pressed
+	    quit = true; //exits the while loop
 	while ( ! game.isGameOver() )	{
 		game.addPiece();
 		for( int row=0; row<20; row++){
@@ -48,8 +50,8 @@ int main ( int argc, char* args[] ) {
 		//game.display();
 
 		while( ! game.pieceFinishedFalling() ) {
-game.down();
-SDL_Delay( (10-game.getLevel()) * 50 );
+		  game.down();
+		  SDL_Delay( (10-game.getLevel()) * 50 );
 			for( int row=0; row<20; row++){
 			for( int col=0; col<10; col++){
 			   if( game.isSpotFull( row , col) == 1 ){
@@ -85,9 +87,7 @@ SDL_Delay( (10-game.getLevel()) * 50 );
 
 
 	  while ( SDL_PollEvent( &e ) != 0 ) { //while there are events to be processed
-		if( e.type == SDL_QUIT ) //if the x button is pressed
-		   quit = true; //exits the while loop
-		else if( e.type == SDL_KEYDOWN ) {
+		if( e.type == SDL_KEYDOWN ) {
 		   switch( e.key.keysym.sym ) {
 			case SDLK_UP :
 			   game.rotate();
