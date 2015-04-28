@@ -216,6 +216,8 @@ void graphics :: clearRect( int col, int row){
 }
 
 void graphics :: clearBoard( void ) {
+
+cout << "CLEAR" << endl;
 SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
 	   SDL_RenderClear ( Renderer );
 	
