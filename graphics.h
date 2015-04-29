@@ -14,7 +14,7 @@
 using namespace std;
 
 #include <SDL2/SDL.h>
-#include <SDL_TTF.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 
 class graphics {
@@ -46,9 +46,10 @@ class graphics {
 		SDL_Renderer* Renderer;
 		SDL_Texture* Texture;
 		SDL_Surface* Surface;
-		TFF_Font* Font;
-
-		Board gameBoard;
+		TTF_Font* TitleFont;
+		TTF_Font* OtherFont;
+		TTF_Font* AnotherFont;
+		SDL_Surface* sText;
 
 };
 
@@ -67,6 +68,10 @@ graphics :: graphics(){
 	SDL_Renderer* Renderer = NULL;
 	SDL_Texture* Texture = NULL;
 	SDL_Surface* Surface = NULL;
+	TTF_Font* TitleFont = NULL;
+	TTF_Font* OtherFont = NULL;
+	TTF_Font* AnotherFont = NULL;
+	SDL_Surface* sText = NULL;
 
 	drawBoard();
 	drawGrid();
@@ -109,136 +114,109 @@ bool graphics :: init ( void ) {
 
 
 void graphics :: close ( void ) {
-
+  SDL_FreeSurface( sText );
+  TTF_CloseFont( TitleFont );  
+  TTF_CloseFont( OtherFont );  
+  TTF_CloseFont( AnotherFont );  
   atexit(TTF_Quit);
 
-   SDL_DestroyTexture( Texture );
-   SDL_DestroyRenderer( Renderer );
-   SDL_DestroyWindow ( Window );
-   Window = NULL;
-
-   SDL_Quit();
-
+  SDL_DestroyTexture( Texture );
+  SDL_DestroyRenderer( Renderer );
+  SDL_DestroyWindow ( Window );
+  Window = NULL;
+  
+  SDL_Quit();
+  
 }
 
 void graphics :: drawBoard(){
 //cout << "drawboard" << endl;
 
-   if ( !init() ) //if init returns false
-	printf( "Failed to initialzie!\n" );
-   else { //if init returns true
+  if ( !init() ) //if init returns false
+    printf( "Failed to initialzie!\n" );
+  else { //if init returns true
+    //Colors: RGBA - A is for opaqueness
+    SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
+    SDL_RenderClear ( Renderer );	
+    
+    //DRAW HORIZONTAL GRID LINES
+    SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
+    
+    SDL_RenderDrawLine( Renderer, screen_left, 0*(screen_height/20)-1, screen_right, 0*(screen_height/20)-1 );
+    SDL_RenderDrawLine( Renderer, screen_left, 20*(screen_height/20)-1, screen_right, 20*(screen_height/20)-1 );
+    
+    //DRAW VERTICAL GRID LINES
+    SDL_RenderDrawLine( Renderer, screen_left+0*(screen_width/10)-1, 0, screen_left+0*(screen_width/10)-1, screen_height );
+    SDL_RenderDrawLine( Renderer, screen_left+10*(screen_width/10)-1, 0, screen_left+10*(screen_width/10)-1, screen_height );
 
-/*	bool quit = false;
-	SDL_Event e;
-
-	while ( !quit ) { //while the x has not been pressed
-	  while ( SDL_PollEvent( &e ) != 0 ) { //while there are events to be processed
-		if( e.type == SDL_QUIT ) //if the x button is pressed
-		   quit = true; //exits the while loop
-		else if( e.type == SDL_KEYDOWN ) {
-		   switch( e.key.keysym.sym ) {
-			case SDLK_UP :
-			   //game.rotate()
-			   break;
-			case SDLK_DOWN :
-			   //game.down()
-			   break;
-			case SDLK_LEFT :
-			   //game.left()
-			   break;
-			case SDLK_RIGHT :
-			   //game.right()
-			   break;
-			default :
-			   
-			   break;
-		   }
-		}	
-			   
-	 }*/
-
-	   //Colors: RGBA - A is for opaqueness
-	   SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-	   SDL_RenderClear ( Renderer );	
-
-	   //DRAW HORIZONTAL GRID LINES
-	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-
-	   SDL_RenderDrawLine( Renderer, screen_left, 0*(screen_height/20)-1, screen_right, 0*(screen_height/20)-1 );
-	   SDL_RenderDrawLine( Renderer, screen_left, 20*(screen_height/20)-1, screen_right, 20*(screen_height/20)-1 );
-
-           //DRAW VERTICAL GRID LINES
-	   SDL_RenderDrawLine( Renderer, screen_left+0*(screen_width/10)-1, 0, screen_left+0*(screen_width/10)-1, screen_height );
-	   SDL_RenderDrawLine( Renderer, screen_left+10*(screen_width/10)-1, 0, screen_left+10*(screen_width/10)-1, screen_height );
-
-	   SDL_RenderPresent( Renderer );
+    SDL_RenderPresent( Renderer );
 	
-   }
+  }
 }
 
 
 void graphics :: fillRect( int col, int row, int pieceColor ){
-
-   SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10)-2, (screen_height/20)-2 };
-
-switch ( pieceColor ) {
+  
+  SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10)-2, (screen_height/20)-2 };
+  
+  switch ( pieceColor ) {
 
 
    //red
-   case 1: SDL_SetRenderDrawColor( Renderer, 255, 78, 90, 255 );
-	break;
-   //green
-   case 2: SDL_SetRenderDrawColor( Renderer, 0, 255, 137, 255 );
-	break;
-   //blue
-   case 3: SDL_SetRenderDrawColor( Renderer, 0, 0, 255, 255 );
-	break;
-   //yellow
-   case 4: SDL_SetRenderDrawColor( Renderer, 255, 255, 58, 255 );
-	break;
-   //purple
-   case 5: SDL_SetRenderDrawColor( Renderer, 122, 40, 255, 255 );
-	break;
-   //pink
-   case 6: SDL_SetRenderDrawColor( Renderer, 253, 76, 194, 255 );
-	break;
-   //light blue
-   case 7: SDL_SetRenderDrawColor( Renderer, 0, 191, 255, 255 );
-	break;
-}
-
-
-   SDL_RenderFillRect( Renderer, &fillRect );
-
-	   SDL_RenderPresent( Renderer );
-
+  case 1: SDL_SetRenderDrawColor( Renderer, 255, 78, 90, 255 );
+    break;
+    //green
+  case 2: SDL_SetRenderDrawColor( Renderer, 0, 255, 137, 255 );
+    break;
+    //blue
+  case 3: SDL_SetRenderDrawColor( Renderer, 0, 0, 255, 255 );
+    break;
+    //yellow
+  case 4: SDL_SetRenderDrawColor( Renderer, 255, 255, 58, 255 );
+    break;
+    //purple
+  case 5: SDL_SetRenderDrawColor( Renderer, 122, 40, 255, 255 );
+    break;
+    //pink
+  case 6: SDL_SetRenderDrawColor( Renderer, 253, 76, 194, 255 );
+    break;
+    //light blue
+  case 7: SDL_SetRenderDrawColor( Renderer, 0, 191, 255, 255 );
+    break;
+  }
+  
+  
+  SDL_RenderFillRect( Renderer, &fillRect );
+  
+  SDL_RenderPresent( Renderer );
+  
 }
 void graphics :: clearRect( int col, int row){
 
-   SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10)-2, (screen_height/20)-2 };
-   SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-   SDL_RenderFillRect( Renderer, &fillRect );
-
-	   SDL_RenderPresent( Renderer );
-
+  SDL_Rect fillRect = { screen_left+col*(screen_width/10), row*(screen_height/20), (screen_width/10)-2, (screen_height/20)-2 };
+  SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
+  SDL_RenderFillRect( Renderer, &fillRect );
+  
+  SDL_RenderPresent( Renderer );
+  
 }
 
 void graphics :: clearBoard( void ) {
-
-SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-	   SDL_RenderClear ( Renderer );
-	
-	   //DRAW HORIZONTAL GRID LINES
-	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-	   SDL_RenderDrawLine( Renderer, screen_left, 0*(screen_height/20)-1, screen_right, 0*(screen_height/20)-1 );
-	   SDL_RenderDrawLine( Renderer, screen_left, 20*(screen_height/20)-1, screen_right, 20*(screen_height/20)-1 );
-
-           //DRAW VERTICAL GRID LINES
-	   SDL_RenderDrawLine( Renderer, screen_left+0*(screen_width/10)-1, 0, screen_left+0*(screen_width/10)-1, screen_height );
-	   SDL_RenderDrawLine( Renderer, screen_left+10*(screen_width/10)-1, 0, screen_left+10*(screen_width/10)-1, screen_height );
-
-	   SDL_RenderPresent( Renderer );
-
+  
+  SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
+  SDL_RenderClear ( Renderer );
+  
+  //DRAW HORIZONTAL GRID LINES
+  SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
+  SDL_RenderDrawLine( Renderer, screen_left, 0*(screen_height/20)-1, screen_right, 0*(screen_height/20)-1 );
+  SDL_RenderDrawLine( Renderer, screen_left, 20*(screen_height/20)-1, screen_right, 20*(screen_height/20)-1 );
+  
+  //DRAW VERTICAL GRID LINES
+  SDL_RenderDrawLine( Renderer, screen_left+0*(screen_width/10)-1, 0, screen_left+0*(screen_width/10)-1, screen_height );
+  SDL_RenderDrawLine( Renderer, screen_left+10*(screen_width/10)-1, 0, screen_left+10*(screen_width/10)-1, screen_height );
+  
+  SDL_RenderPresent( Renderer );
+  
 }
 
 void graphics :: drawGrid( void ){
@@ -271,9 +249,17 @@ void graphics :: clearGrid( void ){
 
 void graphics :: drawText( void ){
 
-  Font = TTF_OpenFont( ## , 15);
+  TitleFont = TTF_OpenFont( "CHICORY_.TTF", 30);
+  OtherFont = TTF_OpenFont( "04B_19__.TTF", 20);
+  AnotherFont = TTF_OpenFont( "04B_30__.TTF", 20);
 
+  SDL_Color clrFg = { 255, 255, 255, 255 };
+  SDL_Rect Destination = {0, 0, 50, 50};
 
+  cout << "Segmentation fault (core dumped)" << endl;
+  sText = TTF_RenderText_Solid( TitleFont, " TETRIS ", clrFg );
+  cout << "tears" << endl;
+  SDL_BlitSurface( sText, NULL, Surface, &Destination );
 
-
+  cout << "happy" << endl;
 }
