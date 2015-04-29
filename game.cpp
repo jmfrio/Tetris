@@ -30,9 +30,9 @@ int main ( int argc, char* args[] ) {
   char choice;
 
   while( ! quit ) {
+    while ( ! game.isGameOver() && ! quit )	{
     if ( level > 3 ) 
       SDL.clearGrid();
-    while ( ! game.isGameOver() && ! quit )	{
       game.addPiece();
       for( int row=0; row<20; row++){
         for( int col=0; col<10; col++){
