@@ -55,11 +55,11 @@ class graphics {
 
 graphics :: graphics(){
 
-	window_width=700;
+	window_width=500;
 	window_height=800;
 
-	screen_left=250;
-	screen_right=650;
+	screen_left=50;
+	screen_right=450;
 
 	screen_width=400;
 	screen_height=800;
@@ -75,6 +75,7 @@ graphics :: graphics(){
 
 	drawBoard();
 	drawGrid();
+//	drawText();
 }
 
 bool graphics :: init ( void ) {
@@ -240,7 +241,7 @@ void graphics :: clearGrid( void ){
     SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
   }
   //DRAW VERTICAL GRID LINES
-  SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
+  SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
   for( int i=1; i<=10; i++){
     SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
   }
@@ -256,8 +257,8 @@ void graphics :: drawText( void ){
   SDL_Color clrFg = { 255, 255, 255, 255 };
   SDL_Rect Destination = {0, 0, 50, 50};
 
-  cout << "Segmentation fault (core dumped)" << endl;
-  sText = TTF_RenderText_Solid( TitleFont, " TETRIS ", clrFg );
+  cout << "drawfont" << endl;
+  sText = TTF_RenderText_Solid( TitleFont, "TETRIS", clrFg );
   cout << "tears" << endl;
   SDL_BlitSurface( sText, NULL, Surface, &Destination );
 
