@@ -156,8 +156,8 @@ void graphics :: drawBoard(){
 	   //DRAW HORIZONTAL GRID LINES
 	   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
 
-	   SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
-	   SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
+	   SDL_RenderDrawLine( Renderer, screen_left, 0*(screen_height/20)-1, screen_right, 0*(screen_height/20)-1 );
+	   SDL_RenderDrawLine( Renderer, screen_left, 20*(screen_height/20)-1, screen_right, 20*(screen_height/20)-1 );
 
            //DRAW VERTICAL GRID LINES
 	   SDL_RenderDrawLine( Renderer, screen_left+0*(screen_width/10)-1, 0, screen_left+0*(screen_width/10)-1, screen_height );
@@ -236,12 +236,12 @@ SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
 void graphics :: drawGrid( void ){
   //DRAW HORIZONTAL GRID LINES
   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-  for ( int i=0; i<=20; i++){
+  for ( int i=1; i<20; i++){
     SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
   }
   //DRAW VERTICAL GRID LINES
   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-  for( int i=0; i<=10; i++){
+  for( int i=1; i<10; i++){
     SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
   }
   SDL_RenderPresent( Renderer );
@@ -250,12 +250,12 @@ void graphics :: drawGrid( void ){
 void graphics :: clearGrid( void ){
   //DRAW HORIZONTAL GRID LINES
   SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-  for ( int i=0; i<=20; i++){
+  for ( int i=1; i<=20; i++){
     SDL_RenderDrawLine( Renderer, screen_left, i*(screen_height/20)-1, screen_right, i*(screen_height/20)-1 );
   }
   //DRAW VERTICAL GRID LINES
   SDL_SetRenderDrawColor( Renderer, 255, 255, 255, 255 );
-  for( int i=0; i<=10; i++){
+  for( int i=1; i<=10; i++){
     SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
   }
   SDL_RenderPresent( Renderer );
