@@ -17,7 +17,9 @@
 #include <time.h>
 using namespace std;
 
+#include <cstdlib>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <string>
 #include "graphics.h"
 
@@ -28,22 +30,24 @@ int main ( int argc, char* args[] ) {
   bool quit = false;
   SDL_Event e;
   char choice;
-
+ 
   while( ! quit ) {
     while ( ! game.isGameOver() && ! quit )	{
-    if ( game.getLevel() > 3 ) 
+    if ( game.getLevel() > 1 ) 
       SDL.clearGrid();
-      game.addPiece();
-      for( int row=0; row<20; row++){
-        for( int col=0; col<10; col++){
-	  if( game.isSpotFull( row , col) == 1 ){
-	    int color = game.getSpotNumber( row , col );
-	    SDL.fillRect(col, row, color);
-	  }
-	  else
-	    SDL.clearRect(col,row);
-        }
-      }    
+   SDL.drawText();
+    cout << "drawn" << endl;
+    game.addPiece();
+    for( int row=0; row<20; row++){
+      for( int col=0; col<10; col++){
+	if( game.isSpotFull( row , col) == 1 ){
+	  int color = game.getSpotNumber( row , col );
+	  SDL.fillRect(col, row, color);
+	}
+	else
+	  SDL.clearRect(col,row);
+      }
+    }    
       while( ! game.pieceFinishedFalling() && ! quit ) {
         game.down();
         SDL_Delay( (10-game.getLevel()) * 50 );
@@ -99,5 +103,7 @@ int main ( int argc, char* args[] ) {
     SDL.clearBoard();
     SDL_Delay(5000);
 }  
+
+
 SDL.close();	
 }
