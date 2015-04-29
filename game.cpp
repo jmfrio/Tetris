@@ -30,13 +30,18 @@ int main ( int argc, char* args[] ) {
   bool quit = false;
   SDL_Event e;
   char choice;
+
+  system("clear");
+           cout << " Tetris " << endl <<  endl;
+           cout << "Key Controls:" << endl << "Right - move piece right" <<endl << "Left  - move piece left" << endl << "Up    - rotate piece" << endl << "Down  - move to bottom" << endl << "Space - pause for 5 seconds " << endl<< "Esc   - quit window" << endl << endl;
+  cout << "Level:" << endl;
+  cout << endl << "Score:" << endl;
+
  
   while( ! quit ) {
     while ( ! game.isGameOver() && ! quit )	{
-    if ( game.getLevel() > 1 ) 
+    if ( game.getLevel() > 2 ) 
       SDL.clearGrid();
-   SDL.drawText();
-    cout << "drawn" << endl;
     game.addPiece();
     for( int row=0; row<20; row++){
       for( int col=0; col<10; col++){
@@ -71,13 +76,24 @@ int main ( int argc, char* args[] ) {
     }
     else if( e.type == SDL_KEYDOWN ) {
       switch( e.key.keysym.sym ) {
-        case SDLK_UP : 
+        case SDLK_DOWN : 
 	  //game.ALLdown()
 	  while( ! game.pieceFinishedFalling() ) {
 		game.down();
 	  }
 	  break;
-        case SDLK_SPACE : 
+	case SDLK_SPACE :
+	   system("clear");
+	   cout << "PAUSED GAME" << endl;
+	   SDL_Delay(5000);
+   	   system("clear");
+           cout << " Tetris " << endl <<  endl;
+           cout << "Key Controls:" << endl << "Right - move piece right" <<endl << "Left  - move piece left" << endl << "Up    - rotate piece" << endl << "Down  - move to bottom" << endl << "Space - pause for 5 seconds " << endl<< "Esc   - quit window" << endl << endl;
+
+	   cout << "Level: " << game.getLevel() << endl;
+	   cout << endl << "Score: " << game.getScore() << endl;
+	  break;
+        case SDLK_UP : 
 	  game.rotate();
 	  break;
         case SDLK_LEFT : 
@@ -88,6 +104,7 @@ int main ( int argc, char* args[] ) {
 	  break;
 	case SDLK_ESCAPE :
 	  SDL.close();
+	  quit = true;
 	  break;
         default : 
 	  break;
@@ -98,12 +115,23 @@ int main ( int argc, char* args[] ) {
 
       }
   game.setBoard();
+  system("clear");
+          cout << " Tetris " << endl <<  endl;
+          cout << "Key Controls:" << endl << "Right - move piece right" <<endl << "Left  - move piece left" << endl << "Up    - rotate piece" << endl << "Down  - move to bottom" << endl << "Space - pause for 5 seconds " << endl<< "Esc   - quit window" << endl << endl;
+
+  cout << "Level: " << game.getLevel() << endl;
+  cout << endl << "Score: " << game.getScore() << endl;
+
   }
-  //clear the board and display a game over message
-    SDL.clearBoard();
-    SDL_Delay(5000);
 }  
 
-
 SDL.close();	
+    system("clear");
+
+          cout << " Tetris " << endl <<  endl;
+    cout << "GAME OVER" << endl << endl;
+
+
+  cout << "Final Level: " << game.getLevel() << endl;
+  cout << endl << "Final Score: " << game.getScore() << endl;
 }

@@ -1,0 +1,14 @@
+need a function to set board to piece shape (how???)
+	individual to each piece, so it should be in each derived class
+	maybe hard-code board[x1][y1]=1 ... board[x4][y4]=1 (because all pieces have 4 squares)
+update board by changing piece x1-x4, y1-y4 corodinates
+
+set temp board = everything BUT newPiece.  Every time newPiece is turned,
+revert to temp board and then update board by adding the piece with its
+updated coordinates
+
+
+
+
+
+

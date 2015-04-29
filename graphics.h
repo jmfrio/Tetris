@@ -115,11 +115,6 @@ bool graphics :: init ( void ) {
 
 
 void graphics :: close ( void ) {
-  SDL_FreeSurface( sText );
-  TTF_CloseFont( TitleFont );  
-  TTF_CloseFont( OtherFont );  
-  TTF_CloseFont( AnotherFont );  
-  atexit(TTF_Quit);
 
   SDL_DestroyTexture( Texture );
   SDL_DestroyRenderer( Renderer );

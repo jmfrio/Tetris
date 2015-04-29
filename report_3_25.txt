@@ -1,0 +1,34 @@
+Time log:
+30 minutes - SDL tutorial, attempted to open a blank window
+90 minutes - writing Board class functions
+30 minutes - writing driver program/testing Board class
+30 minutes - committing files to github
+45 minutes - group meeting to discuss progress and adjust goals
+60 minutes - revising Board class based on group discussion
+90 minutes - group meeting to make sure individual parts were consistent and
+discuss next steps
+
+
+How the Board.h class works:
+
+The Board.h class is a 2D vector (default size 10x20) of ints.  The pieces classes will contain 8 data members that store the current coordinates of the piece.  The Board is initialized to 0s, and pieces will be represented by 1s.  The Board has the following functions:
+
+display the current board
+setRow, which allows the user to manually fill a row (mainly used for testing)
+isRowFull, which returns a boolean value corresponding to whether or not a certain row is full
+isSpotFull, which returns a boolean value corresponding to whether or not a
+certain spot is full
+removeRow, which is hard-coded to delete a certain row, move every other row down, and initialize the top row to 0s
+among several other functions which have not yet been tested. 
+
+We hope to have the pieces on the board soon and be able to move them around.
+We plan on meeting with Professor Scott to help us in the process of putting
+the pieces and the Board together.  
+
+We decided that it would be more consistent for all of the piece classes to be
+programmed by Jessie and Brittany, and for me to work more on the Board class.
+However, splitting up the coding parts has not kept me from understanding the
+structure and implementation of the piece classes.  
+
+
+
