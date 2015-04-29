@@ -14,6 +14,7 @@
 using namespace std;
 
 #include <SDL2/SDL.h>
+#include <SDL_TTF.h>
 #include <string>
 
 class graphics {
@@ -29,6 +30,7 @@ class graphics {
 		void clearBoard( void );
 		void fillRect( int, int, int);
 		void clearRect( int, int );
+		void drawText( void );
 
 	private:
 		int window_width;
@@ -44,6 +46,7 @@ class graphics {
 		SDL_Renderer* Renderer;
 		SDL_Texture* Texture;
 		SDL_Surface* Surface;
+		TFF_Font* Font;
 
 		Board gameBoard;
 
@@ -98,11 +101,16 @@ bool graphics :: init ( void ) {
 	}
    }
 
+   //initialize TTF
+   TTF_Init();
+
    return success;
 }
 
 
 void graphics :: close ( void ) {
+
+  atexit(TTF_Quit);
 
    SDL_DestroyTexture( Texture );
    SDL_DestroyRenderer( Renderer );
@@ -259,4 +267,13 @@ void graphics :: clearGrid( void ){
     SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
   }
   SDL_RenderPresent( Renderer );
+}
+
+void graphics :: drawText( void ){
+
+  Font = TTF_OpenFont( ## , 15);
+
+
+
+
 }
