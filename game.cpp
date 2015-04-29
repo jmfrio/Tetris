@@ -31,7 +31,7 @@ int main ( int argc, char* args[] ) {
 
   while( ! quit ) {
     while ( ! game.isGameOver() && ! quit )	{
-    if ( level > 3 ) 
+    if ( game.getLevel() > 3 ) 
       SDL.clearGrid();
       game.addPiece();
       for( int row=0; row<20; row++){
@@ -69,6 +69,9 @@ int main ( int argc, char* args[] ) {
       switch( e.key.keysym.sym ) {
         case SDLK_UP : 
 	  //game.ALLdown()
+	  while( ! game.pieceFinishedFalling() ) {
+		game.down();
+	  }
 	  break;
         case SDLK_SPACE : 
 	  game.rotate();
