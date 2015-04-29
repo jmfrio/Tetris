@@ -1,4 +1,4 @@
-//pElizabeth Vista
+//Elizabeth Vista, Brittany Harrington, Jessie Frio
 // Fundamentals of Computing II
 // Final Project -- Tetris
 // board.h -- board that holds Tetris pieces
@@ -34,15 +34,15 @@ class Board {
 		void fillRow(int);                  // set values in a particular row
 		int isRowFull(int);                 // returns 1 if row is full, 0 if not
 		void deleteRow(int);                // deletes row (to be used when row is filled) 
-		int getSpotNumber( int, int);
+		int getSpotNumber( int, int);	    // returns spot on the board
 		void addPiece();                    // put a new piece on the board
 		int isGameOver();                   // to be checked after every piece finished falling, before next piece is made
 		void updateCoordinates();           // set the board to match current coordinates of piece
 		void setBoard();                    // set board=temp (to be used when piece is finished falling)
-		void right();
-		void left();
-		void down();
-		void rotate();
+		void right();			    // function to move piece on board to the right 
+		void left();			    // function to move piece on board to the left
+		void down();			    // function to move piece on board down
+		void rotate();			    // function to rotate a piece on the board
 		int pieceFinishedFalling();
 		int getLevel();
 
@@ -218,6 +218,7 @@ void Board::setBoard() {
 	//every ten rows, move up a level
 	if (rows_deleted_total % 10 == 0 && rows_deleted_total != 0)	{
 		level++;
+		rows_deleted_total=0;	
 		cout << "Level " << level << endl;
 	}
 	if (rows_deleted == 1)	{
