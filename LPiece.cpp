@@ -1,3 +1,8 @@
+//Brittany Harrington, Elizabeth Vista, Jessie Frio
+//CSE 20212
+////Final Project: Tetris
+//LPiece function implementations
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,9 +13,7 @@ using namespace std;
 
 LPiece::LPiece(int size) : Piece(size)	{
 	color=1;
-//	fillVec();
 	//set first coordinates (r1,c1) to upper right corner of L
-	//other 3 points based on (r1,c1)
 	r1=0;
 	c1=5;
 	r2=r1+1;
@@ -64,15 +67,6 @@ void LPiece::rotate()	{
 	numR++;
 	}
 }
-
-//void LPiece::fillVec()	{
-//	shape[0][2]= 1;
-//	
-//	for (int i=0; i<(Piece::getSize()); i++)	{
-//		shape[1][i]= 1;
-//	}
-//}
-
 
 void LPiece :: right(){
 	Piece::right();
