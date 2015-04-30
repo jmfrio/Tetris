@@ -1,3 +1,8 @@
+//Brittany Harrington, Elizabeth Vista, Jessie Frio
+//CSE 20212
+////Final Project: Tetris
+//zPiece function implementations
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,7 +13,6 @@ using namespace std;
 
 zPiece :: zPiece(int size) : Piece(size)	{
 	color = 5;
-	//fillVec();
 	r1= 0;
 	c1= 4;
 	r2= r1;		//0

@@ -1,3 +1,8 @@
+//Brittany Harrington, Elizabeth Vista, Jessie Frio
+//CSE 20212
+////Final Project: Tetris
+//zPiece .h file
+//
 #ifndef ZPIECE_H
 #define ZPIECE_H
 
@@ -15,7 +20,6 @@ class zPiece : public Piece{
 		virtual void left();
 		virtual void down();
 	private:
-		//int color;
 		int numR;
 
 };
