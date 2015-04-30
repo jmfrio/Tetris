@@ -1,3 +1,8 @@
+//Brittany Harrington, Elizabeth Vista, Jessie Frio
+//CSE 20212
+////Final Project: Tetris
+//tPiece function implementations
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -8,7 +13,7 @@ using namespace std;
 
 tPiece :: tPiece(int size) : Piece(size)	{
 	color = 6;
- 	//fillVec();
+ 	//set initial coordinates
 	r1= 0;
 	c1= 4;
 	r2= r1+1;	
@@ -19,13 +24,6 @@ tPiece :: tPiece(int size) : Piece(size)	{
 	c4= c1+1;	
 	numR = 0;
 }
-
-/*void tPiece :: fillVec()	{
-	shape[0][1] = 1;
-		for( int i=0; i<(Piece::getSize()); i++ ){
-			shape[1][i] = 1;
-	  	}
-}*/
 
 void tPiece :: rotate(){
 
