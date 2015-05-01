@@ -135,6 +135,7 @@ int main ( int argc, char* args[] ) {
 		  cout << endl << "Score: " << game.getScore() << endl;
 
 	  }
+  quit = true;
   }  
 
   SDL.close();		//once game is over, close window and clear screen

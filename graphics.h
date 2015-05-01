@@ -245,7 +245,7 @@ void graphics :: clearGrid( void ){
 	}
 	//DRAW VERTICAL GRID LINES
 	SDL_SetRenderDrawColor( Renderer, 0, 0, 0, 255 );
-	for( int i=1; i<=10; i++){
+	for( int i=1; i<10; i++){
 		SDL_RenderDrawLine( Renderer, screen_left+i*(screen_width/10)-1, 0, screen_left+i*(screen_width/10)-1, screen_height );
 	}
 	SDL_RenderPresent( Renderer );
