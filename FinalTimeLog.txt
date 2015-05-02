@@ -1,0 +1,14 @@
+Group Meetings:
+
+(Separate from time individually spent on the project)
+
+Meeting 1: 2/13/15 9:00-9:20 all present, discussed project - decided on tetris and came up with a brief plan
+Meeting 2: 3/3/15 12:30-1:30 all present, created rubric and divided initial tasks
+Meeting 3: 3/17/15 12:15-1:00 all present, shared individual accomplishments, adjusted rubrics, brainstormed ways to improve completed tasks
+Meeting 4: 3/19/15 1:30-3:00 all present, worked on ensuring all of our individual parts were consistent, decided on adjustments to be made to the piece classes to make implementing the game easier
+Meeting 5: 3/25/15 10:15-10:45 all present, discussed individual progress and next steps
+Meeting 6: 4/11/15 2:00-3:00 all present, made sure that everyone was up to speed on our individual progress since the last group meeting, created a checklist of next steps, worked through compilation problems with the board
+Meeting 7: 4/20/15 10:15-10:45 all present, discussed our next step and our progress from the weekend
+Meeting 8: 4/26/15 10:30pm - 2:30am all present, worked on integrating all aspects of our game, cleaned up graphics and got a working game, finalized presentation
+Meeting 9: 4/28/15 9:00 - 11:30 worked for a long time cleaning up aspects of the game, changed user inputs to include a function to drop a piece to the bottom, adjusted gridlines and level incrementing, attempted to add text and sound
+Meeting 10: 4/29/15 12:30 - 3:00 worked to adjust the game since we could not implement text, finalized game
